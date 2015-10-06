@@ -1,0 +1,7 @@
+name = govCMS Poll
+description = Provides extensions to the Drupal core poll module.
+core = 7.x
+package = govCMS Core
+version = 7.x-1.0
+project = govcms
+dependencies[] = poll

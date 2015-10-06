@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implements hook_node_load().
+ *
+ * Ensure polls can be voted on multiple times from the same IP.
+ */
+function govcms_poll_node_load($nodes, $types) {
+  // We only care about the poll module in core.
+  if (!in_array('poll', $types)) {
+    return;
+  }
+  foreach ($nodes as $node) {
+    // Don't evaluate on non-poll nodes.
+    if ($node->type != 'poll') {
+      continue;
+    }
+    // If the current user is allowed to vote on this poll
+    // then our work here is already done.
+    if ($node->allowvotes) {
+      continue;
+    }
+  }
+
+}
